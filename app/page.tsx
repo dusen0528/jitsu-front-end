@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, Play, ShoppingCart, Search, User, Menu } from "lucide-react"
+import { demoCourses } from "@/lib/demo-courses"
 
 export default function HomePage() {
   const categories = [
@@ -52,44 +53,7 @@ export default function HomePage() {
     },
   ]
 
-  const featuredCourses = [
-    {
-      title: "Systematically Attacking The Scrimmage",
-      subtitle: "Lower Body Takedowns",
-      instructor: "Gordon Ryan",
-      rating: 4.9,
-      students: 1234,
-      duration: "4시간 30분",
-      originalPrice: "₩199,000",
-      salePrice: "₩149,000",
-      image: "/placeholder.svg?height=200&width=300",
-      badge: "노기 주짓수",
-    },
-    {
-      title: "Advanced Guard Passing System",
-      subtitle: "Pressure Passing Fundamentals",
-      instructor: "Bernardo Faria",
-      rating: 4.8,
-      students: 987,
-      duration: "3시간 45분",
-      originalPrice: "₩179,000",
-      salePrice: "₩129,000",
-      image: "/placeholder.svg?height=200&width=300",
-      badge: "도복 주짓수",
-    },
-    {
-      title: "Wrestling for BJJ",
-      subtitle: "Takedown Mastery",
-      instructor: "John Danaher",
-      rating: 4.9,
-      students: 1567,
-      duration: "5시간 20분",
-      originalPrice: "₩229,000",
-      salePrice: "₩169,000",
-      image: "/placeholder.svg?height=200&width=300",
-      badge: "레슬링",
-    },
-  ]
+  const featuredCourses = demoCourses
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -133,10 +97,12 @@ export default function HomePage() {
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               </div>
-              <Button variant="ghost" size="sm" className="text-white hover:text-red-400">
-                <User className="h-4 w-4 mr-2" />
-                로그인
-              </Button>
+              <Link href="/login">
+                <Button variant="ghost" size="sm" className="text-white hover:text-red-400">
+                  <User className="h-4 w-4 mr-2" />
+                  로그인
+                </Button>
+              </Link>
               <Link href="/signup">
                 <Button size="sm" className="bg-red-600 hover:bg-red-700">
                   회원가입
@@ -166,9 +132,11 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8">
-                  강의 둘러보기
-                </Button>
+                <Link href="/courses">
+                  <Button size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8">
+                    강의 둘러보기
+                  </Button>
+                </Link>
                 <Button
                   size="lg"
                   variant="outline"
@@ -208,9 +176,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
+              <Link key={index} href="/courses" className="group block">
               <Card
-                key={index}
-                className="bg-gray-800 border-gray-700 hover:border-red-500 transition-colors group cursor-pointer"
+                className="bg-gray-800 border-gray-700 hover:border-red-500 transition-colors cursor-pointer"
               >
                 <CardContent className="p-0">
                   <div className="aspect-video bg-gray-700 relative overflow-hidden">
@@ -230,13 +198,12 @@ export default function HomePage() {
                     <p className="text-gray-400 mb-4">{category.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-red-400 font-semibold">{category.courseCount}</span>
-                      <Button variant="ghost" size="sm" className="text-gray-400 hover:text-red-400">
-                        바로가기 →
-                      </Button>
+                      <span className="text-gray-400 group-hover:text-red-400">바로가기 →</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -251,10 +218,11 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCourses.map((course, index) => (
+          {featuredCourses.map((course, index) => (
+            <Link key={index} href={`/courses/${course.slug}`}
+              className="block group">
               <Card
-                key={index}
-                className="bg-gray-900 border-gray-700 hover:border-red-500 transition-all duration-300 group"
+                className="bg-gray-900 border-gray-700 hover:border-red-500 transition-all duration-300"
               >
                 <CardContent className="p-0">
                   <div className="relative">
@@ -306,13 +274,16 @@ export default function HomePage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            </Link>
+          ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="border-gray-600 text-white hover:bg-gray-800">
-              전체 강의 보기
-            </Button>
+            <Link href="/courses">
+              <Button variant="outline" size="lg" className="border-gray-600 text-white hover:bg-gray-800">
+                전체 강의 보기
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
