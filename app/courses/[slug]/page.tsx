@@ -3,11 +3,14 @@ import Image from 'next/image'
 import { demoCourses } from '@/lib/demo-courses'
 import { Button } from '@/components/ui/button'
 
-interface Props { params: { slug: string } }
+interface Props {
+  params: { slug: string }
+}
 
 export default function CourseDetailPage({ params }: Props) {
   const course = demoCourses.find((c) => c.slug === params.slug)
   if (!course) return notFound()
+
   return (
     <div className="min-h-screen bg-black text-white py-10">
       <div className="container mx-auto px-4 space-y-8">

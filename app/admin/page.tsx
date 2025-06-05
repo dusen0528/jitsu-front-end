@@ -30,6 +30,7 @@ export default function AdminPage() {
           ))}
         </ul>
       </section>
+
     </div>
   )
 }
