@@ -1,0 +1,52 @@
+# Node
+node_modules/
+.pnpm/
+
+# Next.js
+.next/
+out/
+.cache/
+
+# dotenv
+.env*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Build
+dist/
+build/
+
+# Docker
+docker-compose.override.yml
+*.local
+*.pid
+
+# Misc
+coverage/
+*.log
+*.tgz
+*.lock-wscript
+*.tsbuildinfo
+
+# Optional: Mac 관련 메타파일
+.AppleDouble
+.LSOverride
+Icon?
+
+# 기타
+*.sqlite
+*.env.local.*
