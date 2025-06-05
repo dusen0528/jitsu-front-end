@@ -6,27 +6,26 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 
-const loginSchema = z.object({
+const schema = z.object({
   email: z.string().email('유효한 이메일을 입력하세요'),
-  password: z.string().min(6, '비밀번호는 최소 6자 이상'),
 })
 
-type LoginForm = z.infer<typeof loginSchema>
+type FormType = z.infer<typeof schema>
 
-export default function LoginPage() {
-  const form = useForm<LoginForm>({
-    resolver: zodResolver(loginSchema),
+export default function ForgotPasswordPage() {
+  const form = useForm<FormType>({
+    resolver: zodResolver(schema),
   })
 
-  const onSubmit = (data: LoginForm) => {
-    console.log('login', data)
+  const onSubmit = (data: FormType) => {
+    console.log('forgot password', data)
     // TODO: API 연동
   }
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
       <div className="w-full max-w-sm space-y-6">
-        <h1 className="text-3xl font-bold text-center text-red-500">로그인</h1>
+        <h1 className="text-3xl font-bold text-center text-red-500">비밀번호 찾기</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -42,27 +41,9 @@ export default function LoginPage() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>비밀번호</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="비밀번호" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">
-              로그인
+              이메일 전송
             </Button>
-            <p className="text-right text-sm">
-              <a href="/forgot-password" className="text-red-400 hover:underline">
-                비밀번호 찾기
-              </a>
-            </p>
           </form>
         </Form>
       </div>

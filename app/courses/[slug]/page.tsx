@@ -3,11 +3,14 @@ import Image from 'next/image'
 import { demoCourses } from '@/lib/demo-courses'
 import { Button } from '@/components/ui/button'
 
-interface Props { params: { slug: string } }
+interface Props {
+  params: { slug: string }
+}
 
 export default function CourseDetailPage({ params }: Props) {
   const course = demoCourses.find((c) => c.slug === params.slug)
   if (!course) return notFound()
+
   return (
     <div className="min-h-screen bg-black text-white py-10">
       <div className="container mx-auto px-4 space-y-8">
@@ -20,6 +23,7 @@ export default function CourseDetailPage({ params }: Props) {
                 controls
                 className="w-full h-full object-cover"
               />
+              <span className="absolute bottom-2 right-2 bg-black/70 px-2 text-xs text-white">미리보기</span>
             </div>
           </div>
           <div className="space-y-4">
@@ -30,7 +34,9 @@ export default function CourseDetailPage({ params }: Props) {
               <span>{course.salePrice}</span>
               <span className="text-base text-gray-500 line-through">{course.originalPrice}</span>
             </div>
-            <Button className="bg-red-600 hover:bg-red-700">구매하기</Button>
+            <a href={`/courses/${course.slug}/watch`}>
+              <Button className="bg-red-600 hover:bg-red-700">구매하기</Button>
+            </a>
           </div>
         </div>
       </div>
