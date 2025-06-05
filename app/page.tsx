@@ -137,9 +137,11 @@ export default function HomePage() {
                 <User className="h-4 w-4 mr-2" />
                 로그인
               </Button>
-              <Button size="sm" className="bg-red-600 hover:bg-red-700">
-                회원가입
-              </Button>
+              <Link href="/signup">
+                <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                  회원가입
+                </Button>
+              </Link>
               <Button variant="ghost" size="sm" className="md:hidden">
                 <Menu className="h-4 w-4" />
               </Button>
