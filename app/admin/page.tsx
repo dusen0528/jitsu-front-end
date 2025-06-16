@@ -17,6 +17,12 @@ export default function AdminPage() {
             <p className="text-gray-400">새로운 강의 등록 및 편집 기능 (예정)</p>
           </Link>
         </li>
+        <li className="bg-gray-900 border border-gray-700 rounded-lg p-4">
+          <Link href="/admin/payouts" className="block">
+            <h2 className="text-xl font-semibold mb-2">정산 관리</h2>
+            <p className="text-gray-400">출금 요청 내역 확인</p>
+          </Link>
+        </li>
       </ul>
     </div>
   )
