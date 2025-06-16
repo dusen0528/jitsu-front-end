@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { demoCourses } from '@/lib/demo-courses'
-import { Button } from '@/components/ui/button'
+import BuyNowButton from '@/components/BuyNowButton'
 
 interface Props { params: { slug: string } }
 
@@ -30,7 +30,7 @@ export default function CourseDetailPage({ params }: Props) {
               <span>{course.salePrice}</span>
               <span className="text-base text-gray-500 line-through">{course.originalPrice}</span>
             </div>
-            <Button className="bg-red-600 hover:bg-red-700">구매하기</Button>
+            <BuyNowButton course={course} />
           </div>
         </div>
       </div>
