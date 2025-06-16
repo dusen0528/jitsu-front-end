@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star, Play, ShoppingCart, Search, User, Menu } from "lucide-react"
+import { Star, Play, Search, User, Menu } from "lucide-react"
+import CartLink from "@/components/CartLink"
+import AddToCartButton from "@/components/AddToCartButton"
 import { demoCourses } from "@/lib/demo-courses"
 
 export default function HomePage() {
@@ -108,6 +110,7 @@ export default function HomePage() {
                   회원가입
                 </Button>
               </Link>
+              <CartLink />
               <Button variant="ghost" size="sm" className="md:hidden">
                 <Menu className="h-4 w-4" />
               </Button>
@@ -267,10 +270,7 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <Button className="w-full bg-red-600 hover:bg-red-700">
-                      <ShoppingCart className="h-4 w-4 mr-2" />
-                      장바구니 추가
-                    </Button>
+                    <AddToCartButton course={course} />
                   </div>
                 </CardContent>
               </Card>
