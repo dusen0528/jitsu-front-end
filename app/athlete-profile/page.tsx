@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Input } from '@/components/ui/input'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -121,6 +122,16 @@ export default function AthleteProfilePage() {
               )}
             />
             <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">저장하기</Button>
+            <div className="text-center mt-4 space-y-2">
+              <Link href="/payout-request" className="text-red-400 underline">
+                정산 신청하기
+              </Link>
+              <div>
+                <Link href="/athlete-payouts" className="text-red-400 underline">
+                  정산 내역 보기
+                </Link>
+              </div>
+            </div>
           </form>
         </Form>
       </div>
