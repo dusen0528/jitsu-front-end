@@ -9,8 +9,8 @@ export default function CartPage() {
   const router = useRouter()
 
   const handleCheckout = () => {
-    clear()              // 장바구니 비우기
-    router.push('/checkout') // 결제 페이지 이동
+    clear()
+    router.push('/checkout')
   }
 
   return (
