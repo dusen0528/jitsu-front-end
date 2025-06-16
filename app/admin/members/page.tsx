@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Link from 'next/link'
 import { useState } from 'react'
@@ -37,12 +37,10 @@ export default function MembersPage() {
               <TableCell>{m.email}</TableCell>
               <TableCell>{m.role}</TableCell>
               <TableCell className="text-right space-x-2">
-                <Link href={`/admin/members/${m.id}`} className="inline-block">
+                <Link href={`/admin/members/${m.id}`}>
                   <Button size="sm" variant="secondary">수정</Button>
                 </Link>
-                <Button size="sm" variant="destructive" onClick={() => remove(m.id)}>
-                  삭제
-                </Button>
+                <Button size="sm" variant="destructive" onClick={() => remove(m.id)}>삭제</Button>
               </TableCell>
             </TableRow>
           ))}

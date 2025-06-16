@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
-import { notFound, useRouter } from 'next/navigation'
+import { useRouter, notFound } from 'next/navigation'
 import { demoAthleteCourses } from '@/lib/demo-athlete-courses'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -16,6 +16,7 @@ export default function AthleteCourseEditPage({ params }: Props) {
   const [title, setTitle] = useState(course.title)
   const [category, setCategory] = useState(course.badge)
   const [price, setPrice] = useState(course.salePrice)
+
   return (
     <div className="min-h-screen bg-black text-white p-6 space-y-4">
       <h1 className="text-3xl font-bold text-red-500">강의 수정</h1>

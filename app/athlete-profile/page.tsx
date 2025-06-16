@@ -53,10 +53,7 @@ export default function AthleteProfilePage() {
   const toggleSpecialty = (value: string) => {
     const current = form.getValues('specialties') || []
     if (current.includes(value)) {
-      form.setValue(
-        'specialties',
-        current.filter((v) => v !== value),
-      )
+      form.setValue('specialties', current.filter((v) => v !== value))
     } else {
       form.setValue('specialties', [...current, value])
     }
@@ -122,14 +119,11 @@ export default function AthleteProfilePage() {
               )}
             />
             <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">저장하기</Button>
+
             <div className="text-center mt-4 space-y-2">
-              <Link href="/payout-request" className="text-red-400 underline">
-                정산 신청하기
-              </Link>
+              <Link href="/payout-request" className="text-red-400 underline">정산 신청하기</Link>
               <div>
-                <Link href="/athlete-payouts" className="text-red-400 underline">
-                  정산 내역 보기
-                </Link>
+                <Link href="/athlete-payouts" className="text-red-400 underline">정산 내역 보기</Link>
               </div>
             </div>
           </form>

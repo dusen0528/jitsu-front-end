@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Link from 'next/link'
 import { useState } from 'react'
@@ -36,12 +36,10 @@ export default function AthleteCoursesPage() {
               <TableCell>{c.title}</TableCell>
               <TableCell>{c.badge}</TableCell>
               <TableCell className="text-right space-x-2">
-                <Link href={`/athlete-courses/${c.slug}`} className="inline-block">
+                <Link href={`/athlete-courses/${c.slug}`}>
                   <Button size="sm" variant="secondary">수정</Button>
                 </Link>
-                <Button size="sm" variant="destructive" onClick={() => remove(c.slug)}>
-                  삭제
-                </Button>
+                <Button size="sm" variant="destructive" onClick={() => remove(c.slug)}>삭제</Button>
               </TableCell>
             </TableRow>
           ))}
