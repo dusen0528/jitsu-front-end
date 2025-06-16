@@ -5,8 +5,14 @@ import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 
 export default function CartPage() {
-  const { items, removeItem } = useCart()
+  const { items, removeItem, clear } = useCart()
   const router = useRouter()
+
+  const handleCheckout = () => {
+    clear()              // 장바구니 비우기
+    router.push('/checkout') // 결제 페이지 이동
+  }
+
   return (
     <div className="min-h-screen bg-black text-white p-6">
       <h1 className="text-3xl font-bold text-red-500 mb-6">장바구니</h1>
@@ -37,7 +43,7 @@ export default function CartPage() {
           ))}
           <Button
             className="bg-red-600 hover:bg-red-700"
-            onClick={() => router.push('/checkout')}
+            onClick={handleCheckout}
           >
             결제 진행
           </Button>
