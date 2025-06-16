@@ -122,6 +122,7 @@ export default function AthleteProfilePage() {
               )}
             />
             <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">저장하기</Button>
+
             <div className="text-center mt-4 space-y-2">
               <Link href="/payout-request" className="text-red-400 underline">
                 정산 신청하기
