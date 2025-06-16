@@ -1,9 +1,19 @@
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
 import { demoAthleteCourses } from '@/lib/demo-athlete-courses'
+import type { CourseData } from '@/lib/demo-courses'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
 
 export default function AthleteCoursesPage() {
+  const [courses, setCourses] = useState<CourseData[]>(demoAthleteCourses)
+
+  const remove = (slug: string) => {
+    setCourses((prev) => prev.filter((c) => c.slug !== slug))
+  }
+
   return (
     <div className="min-h-screen bg-black text-white p-6">
       <h1 className="text-3xl font-bold text-red-500 mb-6">내 강의 관리</h1>
@@ -21,15 +31,15 @@ export default function AthleteCoursesPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {demoAthleteCourses.map((c) => (
+          {courses.map((c) => (
             <TableRow key={c.slug} className="border-t border-gray-700">
               <TableCell>{c.title}</TableCell>
               <TableCell>{c.badge}</TableCell>
               <TableCell className="text-right space-x-2">
-                <Link href={`/athlete-courses/${c.slug}`} className="inline-block">
+                <Link href={`/athlete-courses/${c.slug}`}>
                   <Button size="sm" variant="secondary">수정</Button>
                 </Link>
-                <Button size="sm" variant="destructive">삭제</Button>
+                <Button size="sm" variant="destructive" onClick={() => remove(c.slug)}>삭제</Button>
               </TableCell>
             </TableRow>
           ))}

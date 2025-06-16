@@ -8,13 +8,13 @@ export default function AdminPage() {
         <li className="bg-gray-900 border border-gray-700 rounded-lg p-4">
           <Link href="/admin/members" className="block">
             <h2 className="text-xl font-semibold mb-2">회원 관리</h2>
-            <p className="text-gray-400">회원 목록 조회 및 권한 설정 기능 (예정)</p>
+            <p className="text-gray-400">회원 목록을 조회하고 수정/삭제할 수 있습니다</p>
           </Link>
         </li>
         <li className="bg-gray-900 border border-gray-700 rounded-lg p-4">
           <Link href="/admin/courses" className="block">
-            <h2 className="text-xl font-semibold mb-2">강의 등록</h2>
-            <p className="text-gray-400">새로운 강의 등록 및 편집 기능 (예정)</p>
+            <h2 className="text-xl font-semibold mb-2">강의 관리</h2>
+            <p className="text-gray-400">강의를 등록하고 수정/삭제할 수 있습니다</p>
           </Link>
         </li>
         <li className="bg-gray-900 border border-gray-700 rounded-lg p-4">

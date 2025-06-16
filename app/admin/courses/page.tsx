@@ -1,9 +1,18 @@
+'use client'
+
 import Link from 'next/link'
-import { demoCourses } from '@/lib/demo-courses'
+import { useState } from 'react'
+import { demoCourses, CourseData } from '@/lib/demo-courses'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
 
 export default function AdminCoursesPage() {
+  const [courses, setCourses] = useState<CourseData[]>(demoCourses)
+
+  const remove = (slug: string) => {
+    setCourses((prev) => prev.filter((c) => c.slug !== slug))
+  }
+
   return (
     <div className="min-h-screen bg-black text-white p-6">
       <h1 className="text-3xl font-bold text-red-500 mb-6">강의 등록</h1>
@@ -22,7 +31,7 @@ export default function AdminCoursesPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {demoCourses.map((c) => (
+          {courses.map((c) => (
             <TableRow key={c.slug} className="border-t border-gray-700">
               <TableCell>{c.title}</TableCell>
               <TableCell>{c.instructor}</TableCell>
@@ -31,7 +40,9 @@ export default function AdminCoursesPage() {
                 <Link href={`/admin/courses/${c.slug}`} className="inline-block">
                   <Button size="sm" variant="secondary">수정</Button>
                 </Link>
-                <Button size="sm" variant="destructive">삭제</Button>
+                <Button size="sm" variant="destructive" onClick={() => remove(c.slug)}>
+                  삭제
+                </Button>
               </TableCell>
             </TableRow>
           ))}
