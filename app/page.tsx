@@ -312,27 +312,27 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">강의</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/courses" className="hover:text-red-400">
                     노기 주짓수
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/courses" className="hover:text-red-400">
                     도복 주짓수
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/courses" className="hover:text-red-400">
                     레슬링
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/courses" className="hover:text-red-400">
                     MMA
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/courses" className="hover:text-red-400">
                     복싱
                   </Link>
                 </li>
@@ -343,27 +343,27 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">지원</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/support/customer-service" className="hover:text-red-400">
                     고객센터
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/support/faq" className="hover:text-red-400">
                     FAQ
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/support/refund-policy" className="hover:text-red-400">
                     환불정책
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/support/terms" className="hover:text-red-400">
                     이용약관
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/support/privacy" className="hover:text-red-400">
                     개인정보처리방침
                   </Link>
                 </li>
@@ -374,22 +374,22 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">회사</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/company/about" className="hover:text-red-400">
                     회사소개
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/company/instructor-support" className="hover:text-red-400">
                     강사 지원
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/company/partnership" className="hover:text-red-400">
                     제휴문의
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-red-400">
+                  <Link href="/company/jobs" className="hover:text-red-400">
                     채용정보
                   </Link>
                 </li>
