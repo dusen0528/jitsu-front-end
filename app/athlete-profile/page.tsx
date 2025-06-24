@@ -1,9 +1,11 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Input } from '@/components/ui/input'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -44,6 +46,7 @@ export default function AthleteProfilePage() {
       specialties: [],
     },
   })
+  const [image, setImage] = useState<string | null>(null)
 
   const onSubmit = (data: z.infer<typeof profileSchema>) => {
     console.log('profile submit', data)
@@ -65,6 +68,19 @@ export default function AthleteProfilePage() {
         <h1 className="text-3xl font-bold text-center text-red-500">선수 프로필 설정</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <div className="flex items-center space-x-4">
+              <Avatar className="w-24 h-24">
+                {image && <AvatarImage src={image} alt="프로필 이미지" />}
+              </Avatar>
+              <Input type="file" accept="image/*" onChange={(e) => {
+                const file = e.target.files?.[0]
+                if (file) {
+                  const reader = new FileReader()
+                  reader.onload = () => setImage(reader.result as string)
+                  reader.readAsDataURL(file)
+                }
+              }} />
+            </div>
             <FormField
               control={form.control}
               name="bio"

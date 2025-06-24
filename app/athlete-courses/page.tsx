@@ -27,6 +27,7 @@ export default function AthleteCoursesPage() {
           <TableRow className="bg-gray-800">
             <TableHead>제목</TableHead>
             <TableHead>카테고리</TableHead>
+            <TableHead>조회수</TableHead>
             <TableHead className="text-right">작업</TableHead>
           </TableRow>
         </TableHeader>
@@ -35,6 +36,7 @@ export default function AthleteCoursesPage() {
             <TableRow key={c.slug} className="border-t border-gray-700">
               <TableCell>{c.title}</TableCell>
               <TableCell>{c.badge}</TableCell>
+              <TableCell>{c.students.toLocaleString()}</TableCell>
               <TableCell className="text-right space-x-2">
                 <Link href={`/athlete-courses/${c.slug}`}>
                   <Button size="sm" variant="secondary">수정</Button>

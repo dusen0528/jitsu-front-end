@@ -79,6 +79,8 @@
 /
 /about                       - 플랫폼 소개
 /instructors                 - 선수 목록
+/instructors/[id]            - 선수 프로필
+
 /categories                  - 종목 목록
 /company/about               - 회사소개
 /company/athlete-support     - 선수 지원
@@ -95,7 +97,7 @@
 /courses                     - 전체 강의 목록
 /courses/[slug]              - 강의 상세
 /payout-request              - 정산 신청
-/athlete-profile             - 선수 프로필 설정
+/athlete-profile             - 선수 프로필 설정 (가입 시 입력)
 /athlete-courses             - 선수 강의 관리
 /athlete-courses/new         - 강의 등록
 /athlete-courses/[slug]      - 강의 수정
