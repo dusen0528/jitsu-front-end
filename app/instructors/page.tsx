@@ -8,8 +8,11 @@ export default function InstructorsPage() {
       <h1 className="text-3xl font-bold text-red-500 mb-6">선수 목록</h1>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {demoAthletes.map((athlete) => (
-          <Link key={athlete.id} href={`/instructors/${athlete.id}`}
-            className="bg-gray-900 border border-gray-700 rounded-md p-4 flex flex-col items-center hover:border-red-500">
+          <Link
+            key={athlete.id}
+            href={`/instructors/${athlete.id}`}
+            className="bg-gray-900 border border-gray-700 rounded-md p-4 flex flex-col items-center hover:border-red-500"
+          >
             <Image
               src={athlete.image}
               alt={athlete.name}
