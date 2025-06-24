@@ -9,10 +9,13 @@ export default function NewMemberPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [role, setRole] = useState('')
+  const [commissionRate, setCommissionRate] = useState(30)
   const router = useRouter()
 
   const onSubmit = () => {
-    alert('회원이 추가되었습니다')
+    alert(
+      `회원이 추가되었습니다 (수수료: ${role === '선수' ? commissionRate : 'N/A'}%)`,
+    )
     router.push('/admin/members')
   }
 
@@ -32,6 +35,16 @@ export default function NewMemberPage() {
           <span className="block mb-1">권한</span>
           <Input value={role} onChange={(e) => setRole(e.target.value)} />
         </label>
+        {role === '선수' && (
+          <label className="block">
+            <span className="block mb-1">수수료 비율 (%)</span>
+            <Input
+              type="number"
+              value={commissionRate}
+              onChange={(e) => setCommissionRate(Number(e.target.value))}
+            />
+          </label>
+        )}
         <Button className="bg-red-600 hover:bg-red-700" onClick={onSubmit}>
           추가
         </Button>

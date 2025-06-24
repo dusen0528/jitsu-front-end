@@ -4,15 +4,17 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 export default function AthleteCourseNewPage() {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [price, setPrice] = useState('')
+  const [description, setDescription] = useState('')
   const router = useRouter()
 
   const onSubmit = () => {
-    alert('강의가 등록되었습니다')
+    alert(`강의가 등록되었습니다\n설명: ${description}`)
     router.push('/athlete-courses')
   }
 
@@ -31,6 +33,10 @@ export default function AthleteCourseNewPage() {
         <label className="block">
           <span className="block mb-1">가격</span>
           <Input value={price} onChange={(e) => setPrice(e.target.value)} />
+        </label>
+        <label className="block">
+          <span className="block mb-1">상세 설명</span>
+          <Textarea value={description} onChange={(e) => setDescription(e.target.value)} />
         </label>
         <Button className="bg-red-600 hover:bg-red-700" onClick={onSubmit}>
           등록

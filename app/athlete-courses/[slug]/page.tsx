@@ -5,6 +5,7 @@ import { useRouter, notFound } from 'next/navigation'
 import { demoAthleteCourses } from '@/lib/demo-athlete-courses'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 interface Props { params: { slug: string } }
 
@@ -16,6 +17,7 @@ export default function AthleteCourseEditPage({ params }: Props) {
   const [title, setTitle] = useState(course.title)
   const [category, setCategory] = useState(course.badge)
   const [price, setPrice] = useState(course.salePrice)
+  const [description, setDescription] = useState(course.description)
 
   return (
     <div className="min-h-screen bg-black text-white p-6 space-y-4">
@@ -33,10 +35,14 @@ export default function AthleteCourseEditPage({ params }: Props) {
           <span className="block mb-1">가격</span>
           <Input value={price} onChange={(e) => setPrice(e.target.value)} />
         </label>
+        <label className="block">
+          <span className="block mb-1">상세 설명</span>
+          <Textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        </label>
         <Button
           className="bg-red-600 hover:bg-red-700"
           onClick={() => {
-            alert('저장되었습니다')
+            alert(`저장되었습니다\n설명: ${description}`)
             router.push('/athlete-courses')
           }}
         >
