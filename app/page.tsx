@@ -79,10 +79,10 @@ export default function HomePage() {
                 전체 강의
               </Link>
               <Link href="/instructors" className="hover:text-red-400 transition-colors">
-                강사진
+                선수 목록
               </Link>
               <Link href="/categories" className="hover:text-red-400 transition-colors">
-                카테고리
+                종목
               </Link>
               <Link href="/about" className="hover:text-red-400 transition-colors">
                 소개
@@ -173,8 +173,8 @@ export default function HomePage() {
       <section className="py-20 bg-gray-900/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">강의 카테고리</h2>
-            <p className="text-xl text-gray-400">다양한 격투기 분야의 전문 강의를 만나보세요</p>
+            <h2 className="text-4xl font-bold mb-4">강의 종목</h2>
+            <p className="text-xl text-gray-400">다양한 격투기 종목의 전문 강의를 만나보세요</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -379,18 +379,13 @@ export default function HomePage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/company/instructor-support" className="hover:text-red-400">
-                    강사 지원
+                  <Link href="/company/athlete-support" className="hover:text-red-400">
+                    선수 지원
                   </Link>
                 </li>
                 <li>
                   <Link href="/company/partnership" className="hover:text-red-400">
                     제휴문의
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/company/jobs" className="hover:text-red-400">
-                    채용정보
                   </Link>
                 </li>
               </ul>
