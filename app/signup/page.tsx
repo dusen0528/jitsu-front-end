@@ -8,6 +8,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { SPECIALTY_OPTIONS } from '@/lib/specialties'
 import {
   Form,
   FormField,
@@ -30,6 +32,10 @@ const studentSchema = z.object({
 const athleteSchema = studentSchema.extend({
   account: z.string().min(1, '정산받을 계좌를 입력하세요'),
   gymAddress: z.string().optional(),
+  bio: z.string().optional(),
+  specialties: z.array(z.string()).optional(),
+  awards: z.string().optional(),
+  image: z.string().optional(),
 })
 
 type StudentForm = z.infer<typeof studentSchema>
@@ -44,7 +50,7 @@ export default function SignupPage() {
   })
   const athleteForm = useForm<AthleteForm>({
     resolver: zodResolver(athleteSchema),
-    defaultValues: { marketing: false },
+    defaultValues: { marketing: false, specialties: [] },
   })
 
   const onSubmitStudent = (data: StudentForm) => {
@@ -219,20 +225,86 @@ export default function SignupPage() {
                   )}
                 />
                 <FormField
-                  control={athleteForm.control}
-                  name="marketing"
+              control={athleteForm.control}
+              name="marketing"
                   render={({ field }) => (
                     <FormItem className="flex items-center space-x-2">
                       <FormControl>
                         <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                       </FormControl>
                       <FormLabel className="!mt-0">마케팅 수신 동의</FormLabel>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={athleteForm.control}
-                  name="account"
+                </FormItem>
+              )}
+            />
+            <div className="flex items-center space-x-4">
+              <Avatar className="w-24 h-24">
+                {athleteForm.watch('image') && (
+                  <AvatarImage src={athleteForm.watch('image')} alt="프로필" />
+                )}
+              </Avatar>
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0]
+                  if (file) {
+                    const reader = new FileReader()
+                    reader.onload = () => athleteForm.setValue('image', reader.result as string)
+                    reader.readAsDataURL(file)
+                  }
+                }}
+              />
+            </div>
+            <FormField
+              control={athleteForm.control}
+              name="bio"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>간단한 자기소개</FormLabel>
+                  <FormControl>
+                    <Input placeholder="자기소개" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div>
+              <FormLabel className="mb-2 block">전문분야</FormLabel>
+              <div className="grid grid-cols-2 gap-2">
+                {SPECIALTY_OPTIONS.map((opt) => (
+                  <label key={opt} className="flex items-center space-x-2 text-sm">
+                    <Checkbox
+                      checked={athleteForm.watch('specialties')?.includes(opt)}
+                      onCheckedChange={() => {
+                        const current = athleteForm.getValues('specialties') || []
+                        if (current.includes(opt)) {
+                          athleteForm.setValue('specialties', current.filter((v) => v !== opt))
+                        } else {
+                          athleteForm.setValue('specialties', [...current, opt])
+                        }
+                      }}
+                    />
+                    <span>{opt}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <FormField
+              control={athleteForm.control}
+              name="awards"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>수상경력</FormLabel>
+                  <FormControl>
+                    <Input placeholder="예: 2023 전국 대회 우승" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={athleteForm.control}
+              name="account"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>정산받을 계좌</FormLabel>

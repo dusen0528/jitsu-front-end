@@ -80,7 +80,6 @@
 /about                       - 플랫폼 소개
 /instructors                 - 선수 목록
 /instructors/[id]            - 선수 프로필
-
 /categories                  - 종목 목록
 /company/about               - 회사소개
 /company/athlete-support     - 선수 지원

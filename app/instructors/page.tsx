@@ -11,16 +11,16 @@ export default function InstructorsPage() {
           <Link
             key={athlete.id}
             href={`/instructors/${athlete.id}`}
-            className="bg-gray-900 border border-gray-700 rounded-md p-4 flex flex-col items-center hover:border-red-500"
+            className="bg-gray-900 border border-gray-700 rounded-lg p-6 flex flex-col items-center text-center hover:border-red-500 transition-colors"
           >
             <Image
               src={athlete.image}
               alt={athlete.name}
-              width={150}
-              height={150}
+              width={160}
+              height={160}
               className="rounded-full mb-4 object-cover"
             />
-            <h3 className="text-xl font-semibold mb-1">{athlete.name}</h3>
+            <h3 className="text-lg font-semibold mb-1">{athlete.name}</h3>
             <p className="text-sm text-gray-400">{athlete.discipline}</p>
           </Link>
         ))}
