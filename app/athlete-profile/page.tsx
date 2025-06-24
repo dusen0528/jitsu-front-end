@@ -59,14 +59,18 @@ export default function AthleteProfilePage() {
               <Avatar className="w-24 h-24">
                 {image && <AvatarImage src={image} alt="프로필 이미지" />}
               </Avatar>
-              <Input type="file" accept="image/*" onChange={(e) => {
-                const file = e.target.files?.[0]
-                if (file) {
-                  const reader = new FileReader()
-                  reader.onload = () => setImage(reader.result as string)
-                  reader.readAsDataURL(file)
-                }
-              }} />
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0]
+                  if (file) {
+                    const reader = new FileReader()
+                    reader.onload = () => setImage(reader.result as string)
+                    reader.readAsDataURL(file)
+                  }
+                }}
+              />
             </div>
             <FormField
               control={form.control}
@@ -121,12 +125,18 @@ export default function AthleteProfilePage() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">저장하기</Button>
+            <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">
+              저장하기
+            </Button>
 
             <div className="text-center mt-4 space-y-2">
-              <Link href="/payout-request" className="text-red-400 underline">정산 신청하기</Link>
+              <Link href="/payout-request" className="text-red-400 underline">
+                정산 신청하기
+              </Link>
               <div>
-                <Link href="/athlete-payouts" className="text-red-400 underline">정산 내역 보기</Link>
+                <Link href="/athlete-payouts" className="text-red-400 underline">
+                  정산 내역 보기
+                </Link>
               </div>
             </div>
           </form>
