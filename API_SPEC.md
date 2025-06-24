@@ -34,6 +34,7 @@
 | DELETE | `/categories/{id}` | 카테고리 삭제 |
 | PATCH | `/members/{id}/ban` | 회원 정지 |
 | PATCH | `/payouts/{id}/complete` | 정산 완료 처리 |
+| PATCH | `/athletes/{id}/commission` | 선수별 수수료 비율 수정 |
 | GET | `/members` | 회원 목록 조회 (페이징) |
 | GET | `/admin/logs` | 관리자 활동 내역 조회 (페이징) |
 | GET | `/payouts/requests` | 전체 정산 요청 목록 조회 (페이징) |
@@ -68,3 +69,46 @@
 
 - 선수는 `/athlete-courses`에서 자신의 강의를 관리하고 새로운 강의를 등록할 수 있음
 - `/mypage/athlete`와 `/mypage/user` 페이지를 통해 각각 업로드한 강의와 구매한 강의를 확인 가능
+- 관리자 페이지에서 선수별 수수료 비율을 수정할 수 있는 입력 필드 제공
+
+## 프론트엔드 페이지 경로
+
+현재 구현된 주요 페이지 경로는 다음과 같습니다.
+
+```
+/
+/about                       - 플랫폼 소개
+/instructors                 - 선수 목록
+/categories                  - 종목 목록
+/company/about               - 회사소개
+/company/athlete-support     - 선수 지원
+/company/partnership         - 제휴문의
+/support/customer-service    - 고객센터
+/support/faq                 - FAQ
+/support/refund-policy       - 환불정책
+/support/terms               - 이용약관
+/support/privacy             - 개인정보처리방침
+/login
+/signup
+/cart
+/checkout
+/courses                     - 전체 강의 목록
+/courses/[slug]              - 강의 상세
+/payout-request              - 정산 신청
+/athlete-profile             - 선수 프로필 설정
+/athlete-courses             - 선수 강의 관리
+/athlete-courses/new         - 강의 등록
+/athlete-courses/[slug]      - 강의 수정
+/athlete-payouts             - 정산 내역
+/athlete-payouts/[id]        - 정산 상세
+/mypage/athlete
+/mypage/user
+/admin
+/admin/members
+/admin/members/new
+/admin/members/[id]
+/admin/courses
+/admin/courses/new
+/admin/courses/[slug]
+/admin/payouts
+```

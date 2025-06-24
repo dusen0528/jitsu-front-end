@@ -27,6 +27,7 @@ export default function MembersPage() {
             <TableHead>이름</TableHead>
             <TableHead>이메일</TableHead>
             <TableHead>권한</TableHead>
+            <TableHead>수수료 (%)</TableHead>
             <TableHead className="text-right">작업</TableHead>
           </TableRow>
         </TableHeader>
@@ -36,6 +37,7 @@ export default function MembersPage() {
               <TableCell>{m.name}</TableCell>
               <TableCell>{m.email}</TableCell>
               <TableCell>{m.role}</TableCell>
+              <TableCell>{m.commissionRate ?? '-'}</TableCell>
               <TableCell className="text-right space-x-2">
                 <Link href={`/admin/members/${m.id}`}>
                   <Button size="sm" variant="secondary">수정</Button>
