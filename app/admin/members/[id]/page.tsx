@@ -16,6 +16,9 @@ export default function EditMemberPage({ params }: Props) {
   const [name, setName] = useState(member.name)
   const [email, setEmail] = useState(member.email)
   const [role, setRole] = useState(member.role)
+  const [commissionRate, setCommissionRate] = useState(
+    member.commissionRate ?? 30,
+  )
 
   return (
     <div className="min-h-screen bg-black text-white p-6 space-y-4">
@@ -33,10 +36,24 @@ export default function EditMemberPage({ params }: Props) {
           <span className="block mb-1">권한</span>
           <Input value={role} onChange={(e) => setRole(e.target.value)} />
         </label>
+        {role === '선수' && (
+          <label className="block">
+            <span className="block mb-1">수수료 비율 (%)</span>
+            <Input
+              type="number"
+              value={commissionRate}
+              onChange={(e) => setCommissionRate(Number(e.target.value))}
+            />
+          </label>
+        )}
         <Button
           className="bg-red-600 hover:bg-red-700"
           onClick={() => {
-            alert('수정되었습니다')
+            alert(
+              `수정되었습니다 (수수료: ${
+                role === '선수' ? commissionRate : 'N/A'
+              }%)`,
+            )
             router.push('/admin/members')
           }}
         >

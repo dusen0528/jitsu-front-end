@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { demoCourses } from '@/lib/demo-courses'
 import BuyNowButton from '@/components/BuyNowButton'
+import SiteHeader from '@/components/SiteHeader'
 
 interface Props { params: { slug: string } }
 
@@ -9,8 +10,9 @@ export default function CourseDetailPage({ params }: Props) {
   const course = demoCourses.find((c) => c.slug === params.slug)
   if (!course) return notFound()
   return (
-    <div className="min-h-screen bg-black text-white py-10">
-      <div className="container mx-auto px-4 space-y-8">
+    <div className="min-h-screen bg-black text-white">
+      <SiteHeader />
+      <div className="container mx-auto px-4 py-10 space-y-8">
         <div className="grid lg:grid-cols-2 gap-8">
           <div>
             <div className="aspect-video bg-gray-800 relative">

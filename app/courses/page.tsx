@@ -4,11 +4,13 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Play } from 'lucide-react'
 import { demoCourses } from '@/lib/demo-courses'
+import SiteHeader from '@/components/SiteHeader'
 
 export default function CoursesPage() {
   return (
-    <div className="min-h-screen bg-black text-white py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-black text-white">
+      <SiteHeader />
+      <div className="container mx-auto px-4 py-20">
         <h1 className="text-4xl font-bold mb-10 text-center">전체 강의</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {demoCourses.map((course) => (
